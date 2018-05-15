@@ -10,7 +10,7 @@ public class ChessBoardTest {
     @Test
     public void whenBoardAreCreatedThenItMustBeFilledProperly() {
         ChessBoard chessBoard = new ChessBoard();
-        
+
         Assert.assertTrue(chessBoard.cell(Coordinate.at("A1")).colour().isBlack());
         Assert.assertTrue(chessBoard.cell(Coordinate.at("A2")).colour().isWhite());
         Assert.assertTrue(chessBoard.cell(Coordinate.at("A3")).colour().isBlack());

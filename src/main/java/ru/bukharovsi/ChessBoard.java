@@ -1,6 +1,7 @@
 package ru.bukharovsi;
 
-import java.util.Collection;
+import ru.bukharovsi.exceptions.BoardAccessException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +10,10 @@ public class ChessBoard {
     private Map<Coordinate, Cell> board = new HashMap<>();
 
     public ChessBoard() {
+        fillCells();
+    }
+
+    private void fillCells() {
         for (int currentInt : Coordinate.Y_COORDINATES) {
 
             Cell.Colour lineStartWith;

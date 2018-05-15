@@ -63,7 +63,7 @@ public class Cell implements Comparable<Cell> {
         return coordinate.toString() + " " + colour.toString() + " "  + occupantStr;
     }
 
-    enum Colour {
+    public enum Colour {
         BLACK,
         WHITE;
 

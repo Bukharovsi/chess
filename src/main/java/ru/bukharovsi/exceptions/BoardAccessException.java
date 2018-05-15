@@ -1,4 +1,7 @@
-package ru.bukharovsi;
+package ru.bukharovsi.exceptions;
+
+import ru.bukharovsi.ChessBoard;
+import ru.bukharovsi.Coordinate;
 
 public class BoardAccessException extends RuntimeException {
 
