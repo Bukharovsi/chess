@@ -60,22 +60,34 @@ public class Coordinate implements Comparable<Coordinate> {
         return x;
     }
 
+    public boolean possibleToMoveUp() {
+        return y != 8;
+    }
+
     public Coordinate moveUp() {
-        if (y == 8) {
+        if (! possibleToMoveUp()) {
             throw CoordinateException.moveUpException();
         }
         return new Coordinate(x, y+1);
     }
 
+    public boolean possibleToMoveDown() {
+        return y != 1;
+    }
+
     public Coordinate moveDown() {
-        if (y == 1) {
+        if (!possibleToMoveDown()) {
             throw CoordinateException.moveDownException();
         }
         return new Coordinate(x, y-1);
     }
 
+    public boolean posibleToMoveRight() {
+        return this.x != 'H';
+    }
+
     public Coordinate moveRight() {
-        if (this.x == 'H') {
+        if (!posibleToMoveRight()) {
             throw CoordinateException.moveRightException();
         }
 
@@ -83,8 +95,12 @@ public class Coordinate implements Comparable<Coordinate> {
         return new Coordinate(X_COORDINATES.charAt(newCharIndex), this.y);
     }
 
+    public boolean possibleToMoveLeft() {
+        return this.x != 'A';
+    }
+
     public Coordinate moveLeft() {
-        if (this.x == 'A') {
+        if (!possibleToMoveLeft()) {
             throw CoordinateException.moveLeftException();
         }
 
