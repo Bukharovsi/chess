@@ -1,5 +1,7 @@
 package ru.bukharovsi;
 
+import ru.bukharovsi.exceptions.CoordinateException;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
@@ -56,6 +58,38 @@ public class Coordinate implements Comparable<Coordinate> {
 
     public Character x() {
         return x;
+    }
+
+    public Coordinate moveUp() {
+        if (y == 8) {
+            throw CoordinateException.moveUpException();
+        }
+        return new Coordinate(x, y+1);
+    }
+
+    public Coordinate moveDown() {
+        if (y == 1) {
+            throw CoordinateException.moveDownException();
+        }
+        return new Coordinate(x, y-1);
+    }
+
+    public Coordinate moveRight() {
+        if (this.x == 'H') {
+            throw CoordinateException.moveRightException();
+        }
+
+        int newCharIndex = X_COORDINATES.indexOf(this.x) + 1;
+        return new Coordinate(X_COORDINATES.charAt(newCharIndex), this.y);
+    }
+
+    public Coordinate moveLeft() {
+        if (this.x == 'A') {
+            throw CoordinateException.moveLeftException();
+        }
+
+        int newCharIndex = X_COORDINATES.indexOf(this.x) - 1;
+        return new Coordinate(X_COORDINATES.charAt(newCharIndex), this.y);
     }
 
     @Override

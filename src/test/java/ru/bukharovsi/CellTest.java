@@ -27,14 +27,14 @@ public class CellTest {
     @Test
     public void whenCellIsOccupaiedthenItIsOccupied() {
         Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
-        e2Cell.occupy(new Pawn());
+        e2Cell.occupy(new Pawn(Cell.Colour.WHITE, e2Cell));
         Assert.assertTrue(e2Cell.isOccupaied());
     }
 
     @Test
     public void whenCellIsOccupaiedThenOccupantCanBeRemoved() {
         Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
-        Chessman pawn = new Pawn();
+        Chessman pawn = new Pawn(Cell.Colour.WHITE, e2Cell);
         e2Cell.occupy(pawn);
         Assert.assertEquals(pawn, e2Cell.removeOccupant());
         Assert.assertFalse(e2Cell.isOccupaied());
