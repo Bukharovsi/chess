@@ -19,7 +19,7 @@ public class CellTest {
     @Test
     public void whenCellisEmptyThenToStringPrintsProperly() {
         Assert.assertEquals(
-                "WHITE E2 is empty",
+                "E2 WHITE is empty",
                 new Cell(new Coordinate('E',2), Cell.Colour.WHITE).toString()
         );
     }

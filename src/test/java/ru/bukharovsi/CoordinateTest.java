@@ -30,4 +30,9 @@ public class CoordinateTest {
     public void whenYCoordinateNowValidThenThrowsException() {
         new Coordinate('Z', 2);
     }
+
+    @Test
+    public void whenCoupleOfCoordinatesAreValidThenCoordinatesMustBeCreated() {
+        Assert.assertEquals(Coordinate.at("E2"), new Coordinate('E', 2));
+    }
 }

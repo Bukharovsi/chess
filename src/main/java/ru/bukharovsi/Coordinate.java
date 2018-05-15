@@ -1,12 +1,18 @@
 package ru.bukharovsi;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
-public class Coordinate {
+public class Coordinate implements Comparable<Coordinate> {
 
     private Character x;
 
     private int y;
+
+    public static String X_COORDINATES = "ABCDEFGH";
+
+    public static Collection<Integer> Y_COORDINATES = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
 
 
     public Coordinate(Character x, int y) {
@@ -22,12 +28,26 @@ public class Coordinate {
         this.y = y;
     }
 
+    public static Coordinate at(String coordinateCouple) {
+        char[] coordinates = coordinateCouple.toCharArray();
+        if (coordinates.length != 2) {
+            throw new IllegalArgumentException(
+                    String.format("Coordinate %s is not valid. Coordinates miust contains 2 chairs", coordinateCouple)
+            );
+        }
+
+        Character x = coordinates[0];
+        int y = Integer.parseInt(String.valueOf(coordinates[1]));
+        return new Coordinate(x, y);
+
+    }
+
     private boolean yIsValid(int y) {
-        return y <=8 && y> 0;
+        return Y_COORDINATES.contains(y);
     }
 
     private boolean xIsValid(Character x) {
-        return "ABCDEFGH".contains(x.toString());
+        return X_COORDINATES.contains(x.toString());
     }
 
     public Integer y() {
@@ -36,6 +56,25 @@ public class Coordinate {
 
     public Character x() {
         return x;
+    }
+
+    @Override
+    public int compareTo(Coordinate anotherCoordinate) {
+        return this.toString().compareTo(anotherCoordinate.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coordinate that = (Coordinate) o;
+        return y == that.y &&
+                Objects.equals(x, that.x);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override

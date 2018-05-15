@@ -7,7 +7,7 @@ import ru.bukharovsi.exceptions.CellIsOccupiedException;
 
 import java.util.Optional;
 
-public class Cell {
+public class Cell implements Comparable<Cell> {
 
     private Colour colour;
 
@@ -47,15 +47,36 @@ public class Cell {
         return removedOccupant;
     }
 
+    public Colour colour() {
+        return colour;
+    }
+
+    @Override
+    public int compareTo(Cell anotherCell) {
+        return this.coordinate.compareTo(anotherCell.coordinate);
+    }
+
     @Override
     public String toString() {
         String occupantStr = occupant.map(chessman -> "Occupaied by " + chessman.toString()).orElse("is empty");
 
-        return colour.toString() + " " + coordinate.toString() + " " + occupantStr;
+        return coordinate.toString() + " " + colour.toString() + " "  + occupantStr;
     }
 
     enum Colour {
         BLACK,
         WHITE;
+
+        public Colour invert() {
+            if (this == BLACK) return WHITE;else return BLACK;
+        }
+
+        public boolean isBlack() {
+            return this == BLACK;
+        }
+
+        public boolean isWhite() {
+            return this == WHITE;
+        }
     }
 }
