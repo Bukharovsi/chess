@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Pawn can go only forward
+ */
 public class PawnAfterFirstTurnRules implements MoveRules {
 
     @Override

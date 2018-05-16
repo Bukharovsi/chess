@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * In first turn Pawn can go forward 2 times
+ */
 public class PawnFirstTurnRules implements MoveRules {
 
     @Override
