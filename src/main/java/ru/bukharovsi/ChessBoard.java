@@ -1,6 +1,7 @@
 package ru.bukharovsi;
 
 import ru.bukharovsi.chessmans.Pawn;
+import ru.bukharovsi.chessmans.Rook;
 import ru.bukharovsi.exceptions.BoardAccessException;
 
 import java.util.HashMap;
@@ -48,6 +49,12 @@ public class ChessBoard {
             Cell currentCell = board.get(new Coordinate(currenChar, 7));
             currentCell.occupy(new Pawn(Cell.Colour.BLACK, currentCell));
         }
+
+        // add rooks
+        board.get(Coordinate.at("A1")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("A1"))));
+        board.get(Coordinate.at("H1")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("H1"))));
+        board.get(Coordinate.at("A8")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("A1"))));
+        board.get(Coordinate.at("H8")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("H8"))));
     }
 
     public Cell cell(Coordinate coordinate) {
