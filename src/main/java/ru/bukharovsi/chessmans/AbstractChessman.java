@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import ru.bukharovsi.Cell;
 import ru.bukharovsi.Colour;
 import ru.bukharovsi.Coordinate;
+import ru.bukharovsi.actions.MoveAction;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
 import ru.bukharovsi.actions.HackAction;
 import ru.bukharovsi.rules.moveRules.MoveRule;
@@ -21,15 +22,18 @@ public abstract class AbstractChessman implements Chessman {
 
     protected HackAction hackAction;
 
-    public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule, HackAction hackAction) {
+    protected MoveAction moveAction;
+
+    public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule, HackAction hackAction, MoveAction moveAction) {
         this.colour = colour;
         this.standAt = standAt;
         this.moveRule = moveRule;
         this.hackAction = hackAction;
+        this.moveAction = moveAction;
     }
 
     public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule) {
-        this(colour, standAt, moveRule, new HackAction());
+        this(colour, standAt, moveRule, new HackAction(), new MoveAction());
     }
 
     @Override
@@ -39,16 +43,13 @@ public abstract class AbstractChessman implements Chessman {
 
     @Override
     public void goTo(Cell cell) {
-        if (! possibleToMove(cell.coordinate())) {
+        if (hackAction.isPossibleToHack(this, cell)) {
+            hackAction.hackTo(this, cell);
+        } else if (moveAction.isPossibleToMove(this, cell)) {
+            moveAction.moveTo(standAt(), cell);
+        } else {
             throw ChessmanMovementException.cantMoveToCell(this, cell);
         }
-        standAt.removeOccupant();
-        cell.occupy(this);
-    }
-
-    @Override
-    public void hackTo(Cell cell) {
-        hackAction.hackTo(this, cell);
     }
 
     public Cell standAt() {
@@ -56,13 +57,17 @@ public abstract class AbstractChessman implements Chessman {
     }
 
     @Override
-    public void killed() {
-        log.info(String.format("%s was killed", this));
+    public void killedBy(Chessman killer) {
+        log.info(String.format("%s was killed by %s", this, killer));
         standAt = null; //todo need to fix!
     }
 
     @Override
-    public boolean possibleToMove(Coordinate to) {
+    public boolean isPossibleToGoTo(Cell cell) {
+        return possibleToMove(cell.coordinate());
+    }
+
+    protected boolean possibleToMove(Coordinate to) {
         return moveRule.possibleToMove(standAt().coordinate(), to);
     }
 

@@ -27,12 +27,12 @@ public class HackAction {
         checkHackTo(killer, destination);
 
         Chessman killedOccupant = destination.removeOccupant();
-        killedOccupant.killed();
+        killedOccupant.killedBy(killer);
         destination.occupy(killer);
     }
 
     private void checkHackTo(Chessman killer, Cell destination) {
-        if (! killer.possibleToMove(destination.coordinate())) {
+        if (! killer.isPossibleToGoTo(destination)) {
             throw ChessmanMovementException.cantMoveToCell(killer, destination);
         }
 

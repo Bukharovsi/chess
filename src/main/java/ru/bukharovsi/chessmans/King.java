@@ -15,16 +15,6 @@ public class King extends AbstractChessman {
     }
 
     @Override
-    public boolean isPossibleToGoTo(Cell cell) {
-        return possibleToMove(cell.coordinate());
-    }
-
-    @Override
-    public boolean isPossibleToHackTo(Cell cell) {
-        return cell.isOccupaied() && possibleToMove(cell.coordinate());
-    }
-
-    @Override
     public String toString() {
         return colour() + " King";
     }

@@ -26,12 +26,10 @@ public interface Chessman {
      */
     void goTo(Cell cell);
 
-    void hackTo(Cell cell);
-
     /**
      * This chessman was hacked
      */
-    void killed();
+    void killedBy(Chessman killer);
 
     /**
      * Is possible to Move to new location
@@ -39,10 +37,6 @@ public interface Chessman {
      * @return
      */
     boolean isPossibleToGoTo(Cell cell);
-
-    boolean isPossibleToHackTo(Cell cell);
-
-    boolean possibleToMove(Coordinate to);
 
     /**
      * Where is this chessman can go (based on chess rules)
