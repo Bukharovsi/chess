@@ -1,5 +1,6 @@
 package ru.bukharovsi;
 
+import ru.bukharovsi.chessmans.Bishop;
 import ru.bukharovsi.chessmans.Pawn;
 import ru.bukharovsi.chessmans.Rook;
 import ru.bukharovsi.exceptions.BoardAccessException;
@@ -53,8 +54,14 @@ public class ChessBoard {
         // add rooks
         board.get(Coordinate.at("A1")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("A1"))));
         board.get(Coordinate.at("H1")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("H1"))));
-        board.get(Coordinate.at("A8")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("A1"))));
-        board.get(Coordinate.at("H8")).occupy(new Rook(Cell.Colour.WHITE, board.get(Coordinate.at("H8"))));
+        board.get(Coordinate.at("A8")).occupy(new Rook(Cell.Colour.BLACK, board.get(Coordinate.at("A1"))));
+        board.get(Coordinate.at("H8")).occupy(new Rook(Cell.Colour.BLACK, board.get(Coordinate.at("H8"))));
+
+        // add bishops
+        board.get(Coordinate.at("C1")).occupy(new Bishop(Cell.Colour.WHITE, board.get(Coordinate.at("C1"))));
+        board.get(Coordinate.at("F1")).occupy(new Bishop(Cell.Colour.WHITE, board.get(Coordinate.at("F1"))));
+        board.get(Coordinate.at("C8")).occupy(new Bishop(Cell.Colour.BLACK, board.get(Coordinate.at("C1"))));
+        board.get(Coordinate.at("F8")).occupy(new Bishop(Cell.Colour.BLACK, board.get(Coordinate.at("F1"))));
     }
 
     public Cell cell(Coordinate coordinate) {
