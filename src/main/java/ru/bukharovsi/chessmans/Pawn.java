@@ -1,48 +1,40 @@
 package ru.bukharovsi.chessmans;
 
 import ru.bukharovsi.Cell;
-import ru.bukharovsi.Coordinate;
+import ru.bukharovsi.rules.PawnFirstTurnRules;
+import ru.bukharovsi.rules.PawnAfterFirstTurnRules;
 
-import java.util.Collection;
-
-public class Pawn implements Chessman {
-
-    private Cell.Colour colour;
-
-    private Cell standAt;
+public class Pawn extends AbstractChessman {
 
     public Pawn(Cell.Colour colour, Cell standAt) {
-        this.colour = colour;
-        this.standAt = standAt;
-    }
-
-    @Override
-    public Cell.Colour colour() {
-        return colour;
+        super(colour, standAt, new PawnFirstTurnRules());
     }
 
     @Override
     public void goTo(Cell cell) {
-
+        super.goTo(cell);
+        rules = new PawnAfterFirstTurnRules();
     }
 
     @Override
     public void hackTo(Cell cell) {
-
+        super.hackTo(cell);
+        rules = new PawnAfterFirstTurnRules();
     }
 
     @Override
     public boolean isPossibleToGoTo(Cell cell) {
-        return false;
+        return !cell.isOccupaied() && possibleToMove(cell.coordinate());
     }
 
     @Override
     public boolean isPossibleToHackTo(Cell cell) {
-        return false;
+        return cell.isOccupaied() && possibleToMove(cell.coordinate());
     }
 
+
     @Override
-    public Collection<Cell> possibleMovements() {
-        return null;
+    public String toString() {
+        return colour() + " Pawn";
     }
 }

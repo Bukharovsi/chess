@@ -2,9 +2,7 @@ package ru.bukharovsi;
 
 import ru.bukharovsi.exceptions.CoordinateException;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 public class Coordinate implements Comparable<Coordinate> {
 
@@ -12,9 +10,9 @@ public class Coordinate implements Comparable<Coordinate> {
 
     private int y;
 
-    public static String X_COORDINATES = "ABCDEFGH";
+    public static ArrayList<Character> HORIZONTAL_NAMES = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'));
 
-    public static Collection<Integer> Y_COORDINATES = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+    public static Collection<Integer> VERTICAL_NAMES = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
 
 
     public Coordinate(Character x, int y) {
@@ -45,11 +43,11 @@ public class Coordinate implements Comparable<Coordinate> {
     }
 
     private boolean yIsValid(int y) {
-        return Y_COORDINATES.contains(y);
+        return VERTICAL_NAMES.contains(y);
     }
 
     private boolean xIsValid(Character x) {
-        return X_COORDINATES.contains(x.toString());
+        return HORIZONTAL_NAMES.contains(x);
     }
 
     public Integer y() {
@@ -91,8 +89,8 @@ public class Coordinate implements Comparable<Coordinate> {
             throw CoordinateException.moveRightException();
         }
 
-        int newCharIndex = X_COORDINATES.indexOf(this.x) + 1;
-        return new Coordinate(X_COORDINATES.charAt(newCharIndex), this.y);
+        int newCharIndex = HORIZONTAL_NAMES.indexOf(this.x) + 1;
+        return new Coordinate(HORIZONTAL_NAMES.get(newCharIndex), this.y);
     }
 
     public boolean possibleToMoveLeft() {
@@ -104,8 +102,8 @@ public class Coordinate implements Comparable<Coordinate> {
             throw CoordinateException.moveLeftException();
         }
 
-        int newCharIndex = X_COORDINATES.indexOf(this.x) - 1;
-        return new Coordinate(X_COORDINATES.charAt(newCharIndex), this.y);
+        int newCharIndex = HORIZONTAL_NAMES.indexOf(this.x) - 1;
+        return new Coordinate(HORIZONTAL_NAMES.get(newCharIndex), this.y);
     }
 
     @Override

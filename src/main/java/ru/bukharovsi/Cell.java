@@ -51,6 +51,10 @@ public class Cell implements Comparable<Cell> {
         return colour;
     }
 
+    public Coordinate coordinate() {
+        return coordinate;
+    }
+
     @Override
     public int compareTo(Cell anotherCell) {
         return this.coordinate.compareTo(anotherCell.coordinate);

@@ -2,6 +2,7 @@ package ru.bukharovsi.chessmans;
 
 
 import ru.bukharovsi.Cell;
+import ru.bukharovsi.Coordinate;
 
 import java.util.Collection;
 
@@ -17,6 +18,8 @@ public interface Chessman {
 
     boolean isPossibleToHackTo(Cell cell);
 
-    Collection<Cell> possibleMovements();
+    boolean possibleToMove(Coordinate to);
+
+    Collection<Coordinate> possibleMovements();
 
 }

@@ -75,4 +75,14 @@ public class CoordinateTest {
     public void whenNotPossibleCanNotMoveLeft() {
         Coordinate.at("A1").moveLeft();
     }
+
+    @Test
+    public void theSameCoordinatesMustBeEquals() {
+        Assert.assertEquals(Coordinate.at("E2"), Coordinate.at("E2"));
+    }
+
+    @Test
+    public void notTheSameCoordinatesMustNotBeEquals() {
+        Assert.assertNotEquals(Coordinate.at("E2"), Coordinate.at("D3"));
+    }
 }

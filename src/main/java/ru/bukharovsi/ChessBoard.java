@@ -1,5 +1,6 @@
 package ru.bukharovsi;
 
+import ru.bukharovsi.chessmans.Pawn;
 import ru.bukharovsi.exceptions.BoardAccessException;
 
 import java.util.HashMap;
@@ -11,10 +12,11 @@ public class ChessBoard {
 
     public ChessBoard() {
         fillCells();
+        putChessmen();
     }
 
     private void fillCells() {
-        for (int currentInt : Coordinate.Y_COORDINATES) {
+        for (int currentInt : Coordinate.VERTICAL_NAMES) {
 
             Cell.Colour lineStartWith;
             if (currentInt % 2 == 0)  {
@@ -24,7 +26,7 @@ public class ChessBoard {
             }
 
             Cell.Colour previousColour = lineStartWith.invert();
-            for (Character currenChar : Coordinate.X_COORDINATES.toCharArray()) {
+            for (Character currenChar : Coordinate.HORIZONTAL_NAMES) {
                 Coordinate coordinate = new Coordinate(currenChar, currentInt);
 
                 Cell.Colour currentColour = previousColour.invert();
@@ -34,11 +36,29 @@ public class ChessBoard {
         }
     }
 
+    public void putChessmen() {
+        // put white pawns
+        for (Character currenChar : Coordinate.HORIZONTAL_NAMES) {
+            Cell currentCell = board.get(new Coordinate(currenChar, 2));
+            currentCell.occupy(new Pawn(Cell.Colour.WHITE, currentCell));
+        }
+
+        // put black pawns
+        for (Character currenChar : Coordinate.HORIZONTAL_NAMES) {
+            Cell currentCell = board.get(new Coordinate(currenChar, 7));
+            currentCell.occupy(new Pawn(Cell.Colour.BLACK, currentCell));
+        }
+    }
+
     public Cell cell(Coordinate coordinate) {
         if (! board.containsKey(coordinate)) {
             throw BoardAccessException.cellNotExists(coordinate, this);
         }
         return board.get(coordinate);
+    }
+
+    public Cell cell(String coupleOfCoordinates) {
+        return cell(Coordinate.at(coupleOfCoordinates));
     }
 
     @Override
