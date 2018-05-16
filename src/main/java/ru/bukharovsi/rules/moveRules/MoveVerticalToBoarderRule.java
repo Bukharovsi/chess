@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class MoveVerticalToBoarder extends AbstractMoveRule {
+public class MoveVerticalToBoarderRule extends AbstractMoveRule {
 
     @Override
     public boolean possibleToMove(Coordinate from, Coordinate to) {

@@ -6,7 +6,7 @@ import ru.bukharovsi.Colour;
 import ru.bukharovsi.Coordinate;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
 import ru.bukharovsi.actions.HackAction;
-import ru.bukharovsi.rules.moveRules.MoveRules;
+import ru.bukharovsi.rules.moveRules.MoveRule;
 
 import java.util.Collection;
 
@@ -17,19 +17,19 @@ public abstract class AbstractChessman implements Chessman {
 
     private Cell standAt;
 
-    protected MoveRules moveRules;
+    protected MoveRule moveRule;
 
     protected HackAction hackAction;
 
-    public AbstractChessman(Colour colour, Cell standAt, MoveRules moveRules, HackAction hackAction) {
+    public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule, HackAction hackAction) {
         this.colour = colour;
         this.standAt = standAt;
-        this.moveRules = moveRules;
+        this.moveRule = moveRule;
         this.hackAction = hackAction;
     }
 
-    public AbstractChessman(Colour colour, Cell standAt, MoveRules moveRules) {
-        this(colour, standAt, moveRules, new HackAction());
+    public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule) {
+        this(colour, standAt, moveRule, new HackAction());
     }
 
     @Override
@@ -63,11 +63,11 @@ public abstract class AbstractChessman implements Chessman {
 
     @Override
     public boolean possibleToMove(Coordinate to) {
-        return moveRules.possibleToMove(standAt().coordinate(), to);
+        return moveRule.possibleToMove(standAt().coordinate(), to);
     }
 
     @Override
     public Collection<Coordinate> possibleMovements() {
-        return moveRules.possibleMovementsFrom(standAt().coordinate());
+        return moveRule.possibleMovementsFrom(standAt().coordinate());
     }
 }

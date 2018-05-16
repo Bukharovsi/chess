@@ -3,8 +3,8 @@ package ru.bukharovsi.chessmans;
 import ru.bukharovsi.Cell;
 import ru.bukharovsi.Colour;
 import ru.bukharovsi.rules.moveRules.AggregateRule;
-import ru.bukharovsi.rules.moveRules.MoveHorizontalToBoarder;
-import ru.bukharovsi.rules.moveRules.MoveVerticalToBoarder;
+import ru.bukharovsi.rules.moveRules.MoveHorizontalToBoarderRule;
+import ru.bukharovsi.rules.moveRules.MoveVerticalToBoarderRule;
 
 public class Rook extends AbstractChessman {
 
@@ -13,8 +13,8 @@ public class Rook extends AbstractChessman {
                 colour,
                 standAt,
                 new AggregateRule()
-                        .addRule(new MoveHorizontalToBoarder())
-                        .addRule(new MoveVerticalToBoarder())
+                        .addRule(new MoveHorizontalToBoarderRule())
+                        .addRule(new MoveVerticalToBoarderRule())
         );
     }
 

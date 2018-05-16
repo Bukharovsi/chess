@@ -4,13 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.bukharovsi.Coordinate;
 
-import static org.junit.Assert.*;
-
-public class MoveOneStepAnyDirectionTest {
+public class MoveOneStepAnyDirectionRuleTest {
 
     @Test
     public void whenStayAtCenterCanMoveTo8Cells() {
-        MoveRules rule = new MoveOneStepAnyDirection();
+        MoveRule rule = new MoveOneStepAnyDirectionRule();
         Assert.assertEquals(8, rule.possibleMovementsFrom(Coordinate.at("E5")).size());
     }
 }

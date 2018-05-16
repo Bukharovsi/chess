@@ -1,13 +1,8 @@
 package ru.bukharovsi.rules.moveRules;
 
-import org.hamcrest.Matchers;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
 import ru.bukharovsi.Coordinate;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -18,7 +13,7 @@ public class AggregateRuleTest {
     @Test
     public void whenAggregateRuleHasOnlyOneRuleTheResultsAreEquals() {
         AggregateRule aggregateRule = new AggregateRule();
-        MoveRules innerRule = new MoveHorizontalToBoarder();
+        MoveRule innerRule = new MoveHorizontalToBoarderRule();
         aggregateRule.addRule(innerRule);
 
         Coordinate e2 = Coordinate.at("E2");
@@ -32,8 +27,8 @@ public class AggregateRuleTest {
     @Test
     public void whenAggregateRuleHas2RuleSTheResultisSumOfTwoRules() {
         AggregateRule aggregateRule = new AggregateRule();
-        MoveRules innerRule1 = new MoveHorizontalToBoarder();
-        MoveRules innerRule2 = new MoveVerticalToBoarder();
+        MoveRule innerRule1 = new MoveHorizontalToBoarderRule();
+        MoveRule innerRule2 = new MoveVerticalToBoarderRule();
         aggregateRule.addRule(innerRule1);
         aggregateRule.addRule(innerRule2);
 

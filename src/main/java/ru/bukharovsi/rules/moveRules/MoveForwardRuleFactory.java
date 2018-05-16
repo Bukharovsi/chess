@@ -9,7 +9,7 @@ import ru.bukharovsi.Colour;
  */
 public class MoveForwardRuleFactory {
 
-    public static MoveRules createOneStepMoveRule(Colour chessmanColour) {
+    public static MoveRule createOneStepMoveRule(Colour chessmanColour) {
         if (chessmanColour.isWhite()) {
             return new MoveUpOneStepRule();
         } else { // black
@@ -17,7 +17,7 @@ public class MoveForwardRuleFactory {
         }
     }
 
-    public static MoveRules createTwoStepMoveRule(Colour chessmanColour) {
+    public static MoveRule createTwoStepMoveRule(Colour chessmanColour) {
         if (chessmanColour.isWhite()) {
             return new MoveUpTwoStepsRule();
         } else { //black

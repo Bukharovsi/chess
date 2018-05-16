@@ -4,8 +4,8 @@ import ru.bukharovsi.Cell;
 import ru.bukharovsi.Colour;
 import ru.bukharovsi.rules.moveRules.AggregateRule;
 import ru.bukharovsi.rules.moveRules.MoveDiagonalRule;
-import ru.bukharovsi.rules.moveRules.MoveHorizontalToBoarder;
-import ru.bukharovsi.rules.moveRules.MoveVerticalToBoarder;
+import ru.bukharovsi.rules.moveRules.MoveHorizontalToBoarderRule;
+import ru.bukharovsi.rules.moveRules.MoveVerticalToBoarderRule;
 
 public class Queen extends AbstractChessman {
 
@@ -14,8 +14,8 @@ public class Queen extends AbstractChessman {
                 colour,
                 standAt,
                 new AggregateRule()
-                    .addRule(new MoveHorizontalToBoarder())
-                    .addRule(new MoveVerticalToBoarder())
+                    .addRule(new MoveHorizontalToBoarderRule())
+                    .addRule(new MoveVerticalToBoarderRule())
                     .addRule(new MoveDiagonalRule())
         );
     }

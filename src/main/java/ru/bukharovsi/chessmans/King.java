@@ -10,7 +10,7 @@ public class King extends AbstractChessman {
         super(
                 colour,
                 standAt,
-                new MoveOneStepAnyDirection()
+                new MoveOneStepAnyDirectionRule()
         );
     }
 

@@ -7,13 +7,11 @@ import ru.bukharovsi.Coordinate;
 
 import java.util.Collection;
 
-import static org.junit.Assert.*;
-
-public class MoveHorizontalToBoarderTest {
+public class MoveHorizontalToBoarderRuleTest {
 
     @Test
     public void whenStayAtTheCornerCanGoOnlyOneDirection() {
-        MoveRules horizontal = new MoveHorizontalToBoarder();
+        MoveRule horizontal = new MoveHorizontalToBoarderRule();
         Collection<Coordinate> movements = horizontal.possibleMovementsFrom(Coordinate.at("A1"));
 
         Assert.assertEquals(7, movements.size());
@@ -28,7 +26,7 @@ public class MoveHorizontalToBoarderTest {
 
     @Test
     public void whenStayAtTheCenteCanGoBothDirections() {
-        MoveRules horizontal = new MoveHorizontalToBoarder();
+        MoveRule horizontal = new MoveHorizontalToBoarderRule();
         Collection<Coordinate> movements = horizontal.possibleMovementsFrom(Coordinate.at("F1"));
 
         Assert.assertEquals(7, movements.size());

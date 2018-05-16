@@ -13,13 +13,13 @@ public class Pawn extends AbstractChessman {
     @Override
     public void goTo(Cell cell) {
         super.goTo(cell);
-        moveRules = MoveForwardRuleFactory.createOneStepMoveRule(colour());
+        moveRule = MoveForwardRuleFactory.createOneStepMoveRule(colour());
     }
 
     @Override
     public void hackTo(Cell cell) {
         super.hackTo(cell);
-        moveRules = MoveForwardRuleFactory.createOneStepMoveRule(colour());
+        moveRule = MoveForwardRuleFactory.createOneStepMoveRule(colour());
     }
 
     @Override

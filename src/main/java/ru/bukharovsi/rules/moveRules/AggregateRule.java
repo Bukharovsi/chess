@@ -1,18 +1,15 @@
 package ru.bukharovsi.rules.moveRules;
 
-import org.junit.Rule;
 import ru.bukharovsi.Coordinate;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 
 public class AggregateRule extends AbstractMoveRule {
 
-    private Collection<MoveRules> moveRules;
+    private Collection<MoveRule> moveRules;
 
-    public AggregateRule(Collection<MoveRules> moveRules) {
+    public AggregateRule(Collection<MoveRule> moveRules) {
         this.moveRules = moveRules;
     }
 
@@ -23,14 +20,14 @@ public class AggregateRule extends AbstractMoveRule {
     @Override
     public Collection<Coordinate> possibleMovementsFrom(Coordinate from) {
         Collection<Coordinate> possibleRules = new HashSet<>();
-        for (MoveRules rule : moveRules) {
+        for (MoveRule rule : moveRules) {
             possibleRules.addAll(rule.possibleMovementsFrom(from));
         }
 
         return possibleRules;
     }
 
-    public AggregateRule addRule(MoveRules rule) {
+    public AggregateRule addRule(MoveRule rule) {
         moveRules.add(rule);
         return this;
     }

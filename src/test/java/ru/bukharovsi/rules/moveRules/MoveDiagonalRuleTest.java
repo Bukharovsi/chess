@@ -7,13 +7,11 @@ import ru.bukharovsi.Coordinate;
 
 import java.util.Collection;
 
-import static org.junit.Assert.*;
-
 public class MoveDiagonalRuleTest {
 
     @Test
     public void whenStayAtCornerOnlyOneDiagonalPossible() {
-        MoveRules rule = new MoveDiagonalRule();
+        MoveRule rule = new MoveDiagonalRule();
         Collection<Coordinate> possibleMovements = rule.possibleMovementsFrom(Coordinate.at("A1"));
 
         Assert.assertEquals(7, possibleMovements.size());
@@ -28,7 +26,7 @@ public class MoveDiagonalRuleTest {
 
     @Test
     public void whenStayAtCenterAllDiagonalsAreAvailable() {
-        MoveRules rule = new MoveDiagonalRule();
+        MoveRule rule = new MoveDiagonalRule();
         Collection<Coordinate> possibleMovements = rule.possibleMovementsFrom(Coordinate.at("E5"));
 
         Assert.assertEquals(13, possibleMovements.size());
