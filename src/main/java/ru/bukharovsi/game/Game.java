@@ -26,6 +26,10 @@ public class Game {
 
     private Integer turnCounter;
 
+    private Chessman kingOfWhitePlayer;
+
+    private Chessman kingOfBlackPlayer;
+
     public Game() {
         chessBoard = new ChessBoard();
         new ChessmanDistributor(chessBoard).distributeChessmen();
@@ -37,12 +41,16 @@ public class Game {
 
         currentPlayer = whitePlayer;
         turnCounter = 1;
+
+        kingOfWhitePlayer = chessBoard.cell("E1").getOccupant();
+        kingOfBlackPlayer = chessBoard.cell("E8").getOccupant();
     }
 
     public void start() {
         while (true) {
 
             try {
+                // Select a cell
                 System.out.println(String.format("**********NEW (%d) TURN***********", turnCounter));
                 System.out.println("Current board state is");
                 System.out.println(chessBoard);
@@ -51,6 +59,7 @@ public class Game {
                 String positionForMove = scanner.nextLine();
                 Cell currentCell = chessBoard.cell(positionForMove);
 
+                // Check if chessman is correct
                 if (! currentCell.isOccupaied()) {
                     System.out.println("Cell is empty, please choose another cell. Press enter co continue");
                     scanner.nextLine();
@@ -65,6 +74,7 @@ public class Game {
                     continue;
                 }
 
+                // Select destination
                 System.out.println(String.format("You can move %s to following destinations:", currentChessman));
                 currentCell.getOccupant().possibleMovements().forEach(System.out::println);
 
@@ -73,14 +83,17 @@ public class Game {
                 Cell destCell = chessBoard.cell(destinationPosition);
 
                 if (! currentChessman.isPossibleToGoTo(destCell)) {
-                    System.out.println(String.format("You can`t move %s to %s. Press enter co continue", currentChessman, destCell));
+                    System.out.println(String.format(
+                            "You can`t move %s to %s. Press enter co continue", currentChessman, destCell.coordinate()));
                     scanner.nextLine();
                     continue;
                 }
 
+                // make action
                 currentChessman.goTo(destCell);
-                System.out.println(String.format("You moved %s from %s to %s", currentChessman, currentCell, destinationPosition));
-                System.out.println("press enter");
+                System.out.println(String.format(
+                        "You moved %s from %s to %s", currentChessman, currentCell.coordinate(), destinationPosition));
+                System.out.println("Press enter to continue");
                 scanner.nextLine();
 
                 if (currentPlayer == whitePlayer) {
@@ -91,9 +104,23 @@ public class Game {
 
                 System.out.println(String.format("**********TURN (%d) FINISHED***********", turnCounter));
                 turnCounter++;
+
+                //checkWinner
+                if (! kingOfBlackPlayer.isAlive()) {
+                    System.out.println("White player is WIN. game over");
+                    scanner.nextLine();
+                    return;
+                }
+
+                if (! kingOfWhitePlayer.isAlive()) {
+                    System.out.println("Black player is WIN. game over");
+                    scanner.nextLine();
+                    return;
+                }
+
             } catch (Exception ex) {
                 System.out.println(String.format("something wrong: %s", ex.getMessage()));
-                System.out.println("press enter");
+                System.out.println("Press enter to continue");
                 scanner.nextLine();
             }
 

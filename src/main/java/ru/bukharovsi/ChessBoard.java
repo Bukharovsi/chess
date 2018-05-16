@@ -18,18 +18,18 @@ public class ChessBoard {
     }
 
     private void fillCells() {
-        for (int currentInt : Coordinate.VERTICAL_NAMES) {
+        for (int columnName : Coordinate.VERTICAL_NAMES) {
 
             Colour lineStartWith;
-            if (currentInt % 2 == 0)  {
+            if (columnName % 2 == 0)  {
                 lineStartWith = Colour.WHITE;
             } else {
                 lineStartWith = Colour.BLACK;
             }
 
             Colour previousColour = lineStartWith.invert();
-            for (Character currenChar : Coordinate.HORIZONTAL_NAMES) {
-                Coordinate coordinate = new Coordinate(currenChar, currentInt);
+            for (Character rowName : Coordinate.HORIZONTAL_NAMES) {
+                Coordinate coordinate = new Coordinate(rowName, columnName);
 
                 Colour currentColour = previousColour.invert();
                 board.put(coordinate, new Cell(coordinate, currentColour));
@@ -37,8 +37,6 @@ public class ChessBoard {
             }
         }
     }
-
-
 
     public Cell cell(Coordinate coordinate) {
         if (! board.containsKey(coordinate)) {

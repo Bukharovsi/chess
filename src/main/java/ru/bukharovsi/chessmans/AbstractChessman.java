@@ -24,12 +24,15 @@ public abstract class AbstractChessman implements Chessman {
 
     protected MoveAction moveAction;
 
+    private Boolean isAlive;
+
     public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule, HackAction hackAction, MoveAction moveAction) {
         this.colour = colour;
         this.standAt = standAt;
         this.moveRule = moveRule;
         this.hackAction = hackAction;
         this.moveAction = moveAction;
+        this.isAlive = true;
     }
 
     public AbstractChessman(Colour colour, Cell standAt, MoveRule moveRule) {
@@ -59,7 +62,13 @@ public abstract class AbstractChessman implements Chessman {
     @Override
     public void killedBy(Chessman killer) {
         log.info(String.format("%s was killed by %s", this, killer));
-        standAt = null; //todo need to fix!
+        standAt = null;
+        isAlive = false;
+    }
+
+    @Override
+    public boolean isAlive() {
+        return isAlive;
     }
 
     @Override

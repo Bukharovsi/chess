@@ -32,6 +32,11 @@ public interface Chessman {
     void killedBy(Chessman killer);
 
     /**
+     * Is not hacked
+     */
+    boolean isAlive();
+
+    /**
      * Is possible to Move to new location
      * @param cell
      * @return

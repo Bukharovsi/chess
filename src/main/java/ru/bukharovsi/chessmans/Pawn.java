@@ -8,6 +8,9 @@ import ru.bukharovsi.rules.moveRules.MoveRule;
 
 import java.util.Collection;
 
+/**
+ * Pawns can move straight, but can hack diagonal
+ */
 public class Pawn extends AbstractChessman {
 
     private MoveRule hackRule;

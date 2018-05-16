@@ -26,6 +26,10 @@ public class Cell implements Comparable<Cell> {
         occupant = Optional.empty();
     }
 
+    /**
+     * Move chessman to this cell
+     * @param newChessman occupant
+     */
     public void occupy(Chessman newChessman) {
         if (occupant.isPresent()) {
             throw new CellIsOccupiedException(this, occupant.get());
@@ -34,14 +38,26 @@ public class Cell implements Comparable<Cell> {
         occupant = Optional.of(newChessman);
     }
 
+    /**
+     * there is a chessman on the cell?
+     * @return true if occupaied else otherwise
+     */
     public boolean isOccupaied() {
         return occupant.isPresent();
     }
 
+    /**
+     * get a chessman stands on the cell
+     * @return
+     */
     public Chessman getOccupant() {
         return occupant.orElseThrow(() -> new CantGetAOccupantBecauseCellIsEmpty(this));
     }
 
+    /**
+     * move occupant from the cell
+     * @return
+     */
     public Chessman removeOccupant() {
         if (! occupant.isPresent()) {
             throw new CantRemoveOccupantBecauseCellIsEmpty(this);

@@ -2,7 +2,6 @@ package ru.bukharovsi.actions;
 
 import ru.bukharovsi.Cell;
 import ru.bukharovsi.chessmans.Chessman;
-import ru.bukharovsi.exceptions.ChessmanHackException;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
 
 /**
@@ -12,7 +11,7 @@ public class MoveAction {
 
     public boolean isPossibleToMove(Chessman chessman, Cell destination) {
         try {
-            checMoveTo(chessman, destination);
+            checkMoveTo(chessman, destination);
         } catch (Exception exception) {
             return false;
         }
@@ -21,13 +20,13 @@ public class MoveAction {
     }
 
     public void moveTo(Cell from, Cell destination) {
-        checMoveTo(from.getOccupant(), destination);
+        checkMoveTo(from.getOccupant(), destination);
 
         Chessman chessman = from.removeOccupant();
         destination.occupy(chessman);
     }
 
-    private void checMoveTo(Chessman chessman, Cell destination) {
+    private void checkMoveTo(Chessman chessman, Cell destination) {
         if (! chessman.isPossibleToGoTo(destination)) {
             throw ChessmanMovementException.cantMoveToCell(chessman, destination);
         }

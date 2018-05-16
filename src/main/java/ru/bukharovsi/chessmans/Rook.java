@@ -18,7 +18,6 @@ public class Rook extends AbstractChessman {
         );
     }
 
-
     @Override
     public String toString() {
         return colour() + " Rook";

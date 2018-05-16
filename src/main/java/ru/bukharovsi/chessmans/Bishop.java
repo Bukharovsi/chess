@@ -10,7 +10,6 @@ public class Bishop extends AbstractChessman {
         super(colour, standAt, new MoveDiagonalRule());
     }
 
-
     @Override
     public String toString() {
         return colour() + " Bishop";

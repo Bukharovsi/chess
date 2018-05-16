@@ -20,8 +20,6 @@ public class Queen extends AbstractChessman {
         );
     }
 
-
-
     @Override
     public String toString() {
         return colour() + " Queen";

@@ -54,11 +54,11 @@ public class Coordinate implements Comparable<Coordinate> {
         return HORIZONTAL_NAMES.contains(x);
     }
 
-    public Integer y() {
+    Integer y() {
         return y;
     }
 
-    public Character x() {
+    Character x() {
         return x;
     }
 
@@ -69,16 +69,12 @@ public class Coordinate implements Comparable<Coordinate> {
         return new Coordinate(x, y+1);
     }
 
-
-
     public Coordinate moveDown() {
         if (!possibleToMoveDown()) {
             throw CoordinateException.moveDownException();
         }
         return new Coordinate(x, y-1);
     }
-
-
 
     public Coordinate moveRight() {
         if (!possibleToMoveRight()) {
@@ -146,7 +142,6 @@ public class Coordinate implements Comparable<Coordinate> {
     public boolean possibleToMoveDown() {
         return y != 1;
     }
-
 
     public boolean possibleToMoveRightUp() {
         return possibleToMoveRight() && possibleToMoveUp();
