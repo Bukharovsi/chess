@@ -1,5 +1,8 @@
 package ru.bukharovsi;
 
+/**
+ * Represents a black or a white colour in the game
+ */
 public enum Colour {
     BLACK,
     WHITE;

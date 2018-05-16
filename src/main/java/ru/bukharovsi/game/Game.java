@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 /**
  * Represents a game lap
+ * Creates a game world, allows players to make turns
  */
 public class Game {
 

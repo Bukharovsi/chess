@@ -5,6 +5,10 @@ import ru.bukharovsi.exceptions.BoardAccessException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents game board with black and white cells
+ * Allows to pick a Cell
+ */
 public class ChessBoard {
 
     private Map<Coordinate, Cell> board = new HashMap<>();

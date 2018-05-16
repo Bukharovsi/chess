@@ -5,6 +5,12 @@ import ru.bukharovsi.chessmans.Chessman;
 import ru.bukharovsi.exceptions.ChessmanHackException;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
 
+/**
+ * Represents a rule how to hack a chessman
+ * Basic rules are
+ *  - you cant hack your own chessman
+ *  - you can hack another chessman if you can to move anu your chessman to the attacked chessman
+ */
 public class HackAction {
 
     public boolean isPossibleToHack(Chessman killer, Cell destination) {
