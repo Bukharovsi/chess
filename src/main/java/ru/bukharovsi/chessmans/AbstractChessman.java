@@ -2,6 +2,7 @@ package ru.bukharovsi.chessmans;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.bukharovsi.Cell;
+import ru.bukharovsi.Colour;
 import ru.bukharovsi.Coordinate;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
 import ru.bukharovsi.actions.HackAction;
@@ -12,7 +13,7 @@ import java.util.Collection;
 @Slf4j
 public abstract class AbstractChessman implements Chessman {
 
-    private Cell.Colour colour;
+    private Colour colour;
 
     private Cell standAt;
 
@@ -20,19 +21,19 @@ public abstract class AbstractChessman implements Chessman {
 
     protected HackAction hackAction;
 
-    public AbstractChessman(Cell.Colour colour, Cell standAt, MoveRules moveRules, HackAction hackAction) {
+    public AbstractChessman(Colour colour, Cell standAt, MoveRules moveRules, HackAction hackAction) {
         this.colour = colour;
         this.standAt = standAt;
         this.moveRules = moveRules;
         this.hackAction = hackAction;
     }
 
-    public AbstractChessman(Cell.Colour colour, Cell standAt, MoveRules moveRules) {
+    public AbstractChessman(Colour colour, Cell standAt, MoveRules moveRules) {
         this(colour, standAt, moveRules, new HackAction());
     }
 
     @Override
-    public Cell.Colour colour() {
+    public Colour colour() {
         return colour;
     }
 

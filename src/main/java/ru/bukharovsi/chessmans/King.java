@@ -1,11 +1,12 @@
 package ru.bukharovsi.chessmans;
 
 import ru.bukharovsi.Cell;
+import ru.bukharovsi.Colour;
 import ru.bukharovsi.rules.moveRules.*;
 
 public class King extends AbstractChessman {
 
-    public King(Cell.Colour colour, Cell standAt) {
+    public King(Colour colour, Cell standAt) {
         super(
                 colour,
                 standAt,

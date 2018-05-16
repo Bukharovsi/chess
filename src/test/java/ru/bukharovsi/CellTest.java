@@ -12,7 +12,7 @@ public class CellTest {
 
     @Test
     public void newCellIsNotOccupied() {
-        Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
+        Cell e2Cell = new Cell(new Coordinate('E',2), Colour.WHITE);
         Assert.assertFalse(e2Cell.isOccupaied());
     }
 
@@ -20,21 +20,21 @@ public class CellTest {
     public void whenCellisEmptyThenToStringPrintsProperly() {
         Assert.assertEquals(
                 "E2 WHITE is empty",
-                new Cell(new Coordinate('E',2), Cell.Colour.WHITE).toString()
+                new Cell(new Coordinate('E',2), Colour.WHITE).toString()
         );
     }
 
     @Test
     public void whenCellIsOccupaiedthenItIsOccupied() {
-        Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
-        e2Cell.occupy(new Pawn(Cell.Colour.WHITE, e2Cell));
+        Cell e2Cell = new Cell(new Coordinate('E',2), Colour.WHITE);
+        e2Cell.occupy(new Pawn(Colour.WHITE, e2Cell));
         Assert.assertTrue(e2Cell.isOccupaied());
     }
 
     @Test
     public void whenCellIsOccupaiedThenOccupantCanBeRemoved() {
-        Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
-        Chessman pawn = new Pawn(Cell.Colour.WHITE, e2Cell);
+        Cell e2Cell = new Cell(new Coordinate('E',2), Colour.WHITE);
+        Chessman pawn = new Pawn(Colour.WHITE, e2Cell);
         e2Cell.occupy(pawn);
         Assert.assertEquals(pawn, e2Cell.removeOccupant());
         Assert.assertFalse(e2Cell.isOccupaied());
@@ -42,13 +42,13 @@ public class CellTest {
 
     @Test(expected = CantRemoveOccupantBecauseCellIsEmpty.class)
     public void whenCellIsEmptyThenOccupantCanNotBeRemoved() {
-        Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
+        Cell e2Cell = new Cell(new Coordinate('E',2), Colour.WHITE);
         e2Cell.removeOccupant();
     }
 
     @Test(expected = CantGetAOccupantBecauseCellIsEmpty.class)
     public void whenCellIsEmptyThenOccupantCanNotBeGot() {
-        Cell e2Cell = new Cell(new Coordinate('E',2), Cell.Colour.WHITE);
+        Cell e2Cell = new Cell(new Coordinate('E',2), Colour.WHITE);
         e2Cell.getOccupant();
     }
 

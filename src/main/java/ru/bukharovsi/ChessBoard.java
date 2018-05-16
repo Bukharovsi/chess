@@ -1,6 +1,5 @@
 package ru.bukharovsi;
 
-import ru.bukharovsi.chessmans.*;
 import ru.bukharovsi.exceptions.BoardAccessException;
 
 import java.util.HashMap;
@@ -17,18 +16,18 @@ public class ChessBoard {
     private void fillCells() {
         for (int currentInt : Coordinate.VERTICAL_NAMES) {
 
-            Cell.Colour lineStartWith;
+            Colour lineStartWith;
             if (currentInt % 2 == 0)  {
-                lineStartWith = Cell.Colour.WHITE;
+                lineStartWith = Colour.WHITE;
             } else {
-                lineStartWith = Cell.Colour.BLACK;
+                lineStartWith = Colour.BLACK;
             }
 
-            Cell.Colour previousColour = lineStartWith.invert();
+            Colour previousColour = lineStartWith.invert();
             for (Character currenChar : Coordinate.HORIZONTAL_NAMES) {
                 Coordinate coordinate = new Coordinate(currenChar, currentInt);
 
-                Cell.Colour currentColour = previousColour.invert();
+                Colour currentColour = previousColour.invert();
                 board.put(coordinate, new Cell(coordinate, currentColour));
                 previousColour = currentColour;
             }

@@ -1,12 +1,13 @@
 package ru.bukharovsi.chessmans;
 
 import ru.bukharovsi.Cell;
+import ru.bukharovsi.Colour;
 import ru.bukharovsi.rules.moveRules.MoveForwardTwoSteps;
 import ru.bukharovsi.rules.moveRules.MoveForwardOneStepRule;
 
 public class Pawn extends AbstractChessman {
 
-    public Pawn(Cell.Colour colour, Cell standAt) {
+    public Pawn(Colour colour, Cell standAt) {
         super(colour, standAt, new MoveForwardTwoSteps());
     }
 

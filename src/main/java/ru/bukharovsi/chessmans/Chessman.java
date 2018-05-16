@@ -2,6 +2,7 @@ package ru.bukharovsi.chessmans;
 
 
 import ru.bukharovsi.Cell;
+import ru.bukharovsi.Colour;
 import ru.bukharovsi.Coordinate;
 
 import java.util.Collection;
@@ -13,7 +14,7 @@ import java.util.Collection;
  */
 public interface Chessman {
 
-    Cell.Colour colour();
+    Colour colour();
 
     void goTo(Cell cell);
 

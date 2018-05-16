@@ -1,6 +1,7 @@
 package ru.bukharovsi.chessmans;
 
 import ru.bukharovsi.Cell;
+import ru.bukharovsi.Colour;
 import ru.bukharovsi.rules.moveRules.AggregateRule;
 import ru.bukharovsi.rules.moveRules.MoveDiagonalRule;
 import ru.bukharovsi.rules.moveRules.MoveHorizontalToBoarder;
@@ -8,7 +9,7 @@ import ru.bukharovsi.rules.moveRules.MoveVerticalToBoarder;
 
 public class Queen extends AbstractChessman {
 
-    public Queen(Cell.Colour colour, Cell standAt) {
+    public Queen(Colour colour, Cell standAt) {
         super(
                 colour,
                 standAt,
