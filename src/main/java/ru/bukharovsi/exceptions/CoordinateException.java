@@ -15,10 +15,26 @@ public class CoordinateException extends RuntimeException {
     }
 
     public static CoordinateException moveRightException() {
-        return new CoordinateException("Cannot move right because you already at the boarder");
+        return new CoordinateException("Cannot move to right because you already at the boarder");
     }
 
     public static CoordinateException moveLeftException() {
-        return new CoordinateException("Cannot move left because you already at the boarder");
+        return new CoordinateException("Cannot move to left because you already at the boarder");
+    }
+
+    public static CoordinateException moveRightUpException() {
+        return new CoordinateException("Cannot move to right up because you already at the boarder");
+    }
+
+    public static CoordinateException moveRightDownException() {
+        return new CoordinateException("Cannot move to right down because you already at the boarder");
+    }
+
+    public static CoordinateException moveLeftDownException() {
+        return new CoordinateException("Cannot move to left down because you already at the boarder");
+    }
+
+    public static CoordinateException moveLeftUpException() {
+        return new CoordinateException("Cannot move to left up because you already at the boarder");
     }
 }

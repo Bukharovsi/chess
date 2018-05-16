@@ -62,10 +62,6 @@ public class Coordinate implements Comparable<Coordinate> {
         return x;
     }
 
-    public boolean possibleToMoveUp() {
-        return y != 8;
-    }
-
     public Coordinate moveUp() {
         if (! possibleToMoveUp()) {
             throw CoordinateException.moveUpException();
@@ -73,9 +69,7 @@ public class Coordinate implements Comparable<Coordinate> {
         return new Coordinate(x, y+1);
     }
 
-    public boolean possibleToMoveDown() {
-        return y != 1;
-    }
+
 
     public Coordinate moveDown() {
         if (!possibleToMoveDown()) {
@@ -84,21 +78,15 @@ public class Coordinate implements Comparable<Coordinate> {
         return new Coordinate(x, y-1);
     }
 
-    public boolean posibleToMoveRight() {
-        return this.x != 'H';
-    }
+
 
     public Coordinate moveRight() {
-        if (!posibleToMoveRight()) {
+        if (!possibleToMoveRight()) {
             throw CoordinateException.moveRightException();
         }
 
         int newCharIndex = HORIZONTAL_NAMES.indexOf(this.x) + 1;
         return new Coordinate(HORIZONTAL_NAMES.get(newCharIndex), this.y);
-    }
-
-    public boolean possibleToMoveLeft() {
-        return this.x != 'A';
     }
 
     public Coordinate moveLeft() {
@@ -109,6 +97,73 @@ public class Coordinate implements Comparable<Coordinate> {
         int newCharIndex = HORIZONTAL_NAMES.indexOf(this.x) - 1;
         return new Coordinate(HORIZONTAL_NAMES.get(newCharIndex), this.y);
     }
+
+    public Coordinate moveRightUp() {
+        if (!possibleToMoveRightUp()) {
+            throw CoordinateException.moveRightUpException();
+        }
+
+        return this.moveRight().moveUp();
+    }
+
+    public Coordinate moveRightDown() {
+        if (!possibleToMoveRightDown()) {
+            throw CoordinateException.moveRightDownException();
+        }
+
+        return this.moveRight().moveDown();
+    }
+
+    public Coordinate moveLeftUp() {
+        if (!possibleToMoveLeftUp()) {
+            throw CoordinateException.moveLeftUpException();
+        }
+
+        return this.moveLeft().moveUp();
+    }
+
+    public Coordinate moveLeftDown() {
+        if (!possibleToMoveLeftDown()) {
+            throw CoordinateException.moveLeftDownException();
+        }
+
+        return this.moveLeft().moveDown();
+    }
+
+
+    public boolean possibleToMoveUp() {
+        return y != 8;
+    }
+
+    public boolean possibleToMoveRight() {
+        return this.x != 'H';
+    }
+
+    public boolean possibleToMoveLeft() {
+        return this.x != 'A';
+    }
+
+    public boolean possibleToMoveDown() {
+        return y != 1;
+    }
+
+
+    public boolean possibleToMoveRightUp() {
+        return possibleToMoveRight() && possibleToMoveUp();
+    }
+
+    public boolean possibleToMoveRightDown() {
+        return possibleToMoveRight() && possibleToMoveDown();
+    }
+
+    public boolean possibleToMoveLeftUp() {
+        return possibleToMoveLeft() && possibleToMoveUp();
+    }
+
+    public boolean possibleToMoveLeftDown() {
+        return possibleToMoveLeft() && possibleToMoveDown();
+    }
+
 
     @Override
     public int compareTo(Coordinate anotherCoordinate) {

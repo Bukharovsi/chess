@@ -24,7 +24,7 @@ public class MoveHorizontalToBoarder extends AbstractMoveRule {
     private Collection<Coordinate> collectRight(Coordinate from) {
         List<Coordinate> posibleMovements = new ArrayList<>();
         Coordinate currentPosition = from;
-        while (currentPosition.posibleToMoveRight()) {
+        while (currentPosition.possibleToMoveRight()) {
             currentPosition = currentPosition.moveRight();
             posibleMovements.add(currentPosition);
         }
