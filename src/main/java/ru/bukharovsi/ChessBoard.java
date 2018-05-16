@@ -2,6 +2,7 @@ package ru.bukharovsi;
 
 import ru.bukharovsi.chessmans.Bishop;
 import ru.bukharovsi.chessmans.Pawn;
+import ru.bukharovsi.chessmans.Queen;
 import ru.bukharovsi.chessmans.Rook;
 import ru.bukharovsi.exceptions.BoardAccessException;
 
@@ -62,6 +63,10 @@ public class ChessBoard {
         board.get(Coordinate.at("F1")).occupy(new Bishop(Cell.Colour.WHITE, board.get(Coordinate.at("F1"))));
         board.get(Coordinate.at("C8")).occupy(new Bishop(Cell.Colour.BLACK, board.get(Coordinate.at("C1"))));
         board.get(Coordinate.at("F8")).occupy(new Bishop(Cell.Colour.BLACK, board.get(Coordinate.at("F1"))));
+
+        //add queens
+        board.get(Coordinate.at("D1")).occupy(new Queen(Cell.Colour.WHITE, board.get(Coordinate.at("D1"))));
+        board.get(Coordinate.at("D8")).occupy(new Queen(Cell.Colour.BLACK, board.get(Coordinate.at("D8"))));
     }
 
     public Cell cell(Coordinate coordinate) {
