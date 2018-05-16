@@ -9,20 +9,20 @@ import java.util.List;
 /**
  * In first turn Pawn can go forward 2 times
  */
-public class MoveForwardTwoSteps extends AbstractMoveRule {
+public class MoveDownTwoStepsRule extends AbstractMoveRule {
 
     @Override
     public Collection<Coordinate> possibleMovementsFrom(Coordinate from) {
         List<Coordinate> moves = new ArrayList<>();
 
         // move forward
-        if (from.possibleToMoveUp()) {
-            moves.add(from.moveUp());
+        if (from.possibleToMoveDown()) {
+            moves.add(from.moveDown());
         }
 
         // move forward 2 steps
-        if (from.possibleToMoveUp() && from.moveUp().possibleToMoveUp()) {
-            moves.add(from.moveUp().moveUp());
+        if (from.possibleToMoveDown() && from.moveDown().possibleToMoveDown()) {
+            moves.add(from.moveDown().moveDown());
         }
 
         return moves;

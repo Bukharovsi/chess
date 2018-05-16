@@ -9,15 +9,15 @@ import java.util.List;
 /**
  * Pawn can go only forward
  */
-public class MoveForwardOneStepRule extends AbstractMoveRule {
+public class MoveDownOneStepRule extends AbstractMoveRule {
 
     @Override
     public Collection<Coordinate> possibleMovementsFrom(Coordinate from) {
         List<Coordinate> moves = new ArrayList<>();
 
         // move forward
-        if (from.possibleToMoveUp()) {
-            moves.add(from.moveUp());
+        if (from.possibleToMoveDown()) {
+            moves.add(from.moveDown());
         }
 
         return moves;
