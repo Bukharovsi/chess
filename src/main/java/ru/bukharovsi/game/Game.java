@@ -2,6 +2,7 @@ package ru.bukharovsi.game;
 
 import ru.bukharovsi.Cell;
 import ru.bukharovsi.ChessBoard;
+import ru.bukharovsi.ChessmanDistributor;
 import ru.bukharovsi.chessmans.Chessman;
 
 import java.util.Scanner;
@@ -25,8 +26,11 @@ public class Game {
 
     public Game() {
         chessBoard = new ChessBoard();
+        new ChessmanDistributor(chessBoard).distributeChessmen();
+
         whitePlayer = new Player("Jack", Cell.Colour.WHITE);
         blackPlayer = new Player("Tom", Cell.Colour.BLACK);
+        
         scanner = new Scanner(System.in);
 
         currentPlayer = whitePlayer;
