@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * In first turn Pawn can go forward 2 times
  */
-public class PawnFirstTurnRules extends AbstractMoveRule {
+public class MoveForwardTwoSteps extends AbstractMoveRule {
 
     @Override
     public Collection<Coordinate> possibleMovementsFrom(Coordinate from) {

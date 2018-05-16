@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Pawn can go only forward
  */
-public class PawnAfterFirstTurnRules extends AbstractMoveRule {
+public class MoveForwardOneStepRule extends AbstractMoveRule {
 
     @Override
     public Collection<Coordinate> possibleMovementsFrom(Coordinate from) {

@@ -1,25 +1,25 @@
 package ru.bukharovsi.chessmans;
 
 import ru.bukharovsi.Cell;
-import ru.bukharovsi.rules.moveRules.PawnFirstTurnRules;
-import ru.bukharovsi.rules.moveRules.PawnAfterFirstTurnRules;
+import ru.bukharovsi.rules.moveRules.MoveForwardTwoSteps;
+import ru.bukharovsi.rules.moveRules.MoveForwardOneStepRule;
 
 public class Pawn extends AbstractChessman {
 
     public Pawn(Cell.Colour colour, Cell standAt) {
-        super(colour, standAt, new PawnFirstTurnRules());
+        super(colour, standAt, new MoveForwardTwoSteps());
     }
 
     @Override
     public void goTo(Cell cell) {
         super.goTo(cell);
-        moveRules = new PawnAfterFirstTurnRules();
+        moveRules = new MoveForwardOneStepRule();
     }
 
     @Override
     public void hackTo(Cell cell) {
         super.hackTo(cell);
-        moveRules = new PawnAfterFirstTurnRules();
+        moveRules = new MoveForwardOneStepRule();
     }
 
     @Override
