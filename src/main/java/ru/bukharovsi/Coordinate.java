@@ -4,6 +4,9 @@ import ru.bukharovsi.exceptions.CoordinateException;
 
 import java.util.*;
 
+/**
+ * Coordinate of Cell, as Example E2, E4, D5
+ */
 public class Coordinate implements Comparable<Coordinate> {
 
     private Character x;

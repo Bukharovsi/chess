@@ -6,6 +6,11 @@ import ru.bukharovsi.Coordinate;
 
 import java.util.Collection;
 
+/**
+ * A shape of chess.
+ * Can be a king, queen, pawn and so on.
+ * Of course, has a Colour and position. Also can goto another cell, hack another chessman.
+ */
 public interface Chessman {
 
     Cell.Colour colour();

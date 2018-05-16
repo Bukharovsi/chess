@@ -3,9 +3,9 @@ package ru.bukharovsi.chessmans;
 import lombok.extern.slf4j.Slf4j;
 import ru.bukharovsi.Cell;
 import ru.bukharovsi.Coordinate;
-import ru.bukharovsi.exceptions.ChessmanHackException;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
-import ru.bukharovsi.rules.MoveRules;
+import ru.bukharovsi.actions.HackAction;
+import ru.bukharovsi.rules.moveRules.MoveRules;
 
 import java.util.Collection;
 
@@ -16,12 +16,19 @@ public abstract class AbstractChessman implements Chessman {
 
     private Cell standAt;
 
-    protected MoveRules rules;
+    protected MoveRules moveRules;
 
-    public AbstractChessman(Cell.Colour colour, Cell standAt, MoveRules rules) {
+    protected HackAction hackAction;
+
+    public AbstractChessman(Cell.Colour colour, Cell standAt, MoveRules moveRules, HackAction hackAction) {
         this.colour = colour;
         this.standAt = standAt;
-        this.rules = rules;
+        this.moveRules = moveRules;
+        this.hackAction = hackAction;
+    }
+
+    public AbstractChessman(Cell.Colour colour, Cell standAt, MoveRules moveRules) {
+        this(colour, standAt, moveRules, new HackAction());
     }
 
     @Override
@@ -40,21 +47,7 @@ public abstract class AbstractChessman implements Chessman {
 
     @Override
     public void hackTo(Cell cell) {
-        if (! possibleToMove(cell.coordinate())) {
-            throw ChessmanMovementException.cantMoveToCell(this, cell);
-        }
-
-        if (! cell.isOccupaied()) {
-            throw ChessmanHackException.cellNotOccupied(this, cell);
-        }
-
-        if (cell.getOccupant().colour().equals(this.colour)) {
-            throw ChessmanHackException.cellOccupantHasTheSameColour(this, cell);
-        }
-
-        Chessman killedOccupant = cell.removeOccupant();
-        killedOccupant.killed();
-        cell.occupy(this);
+        hackAction.hackTo(this, cell);
     }
 
     public Cell standAt() {
@@ -69,11 +62,11 @@ public abstract class AbstractChessman implements Chessman {
 
     @Override
     public boolean possibleToMove(Coordinate to) {
-        return rules.possibleToMove(standAt().coordinate(), to);
+        return moveRules.possibleToMove(standAt().coordinate(), to);
     }
 
     @Override
     public Collection<Coordinate> possibleMovements() {
-        return rules.possibleMovementsFrom(standAt().coordinate());
+        return moveRules.possibleMovementsFrom(standAt().coordinate());
     }
 }

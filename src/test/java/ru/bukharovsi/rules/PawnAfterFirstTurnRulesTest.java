@@ -3,10 +3,9 @@ package ru.bukharovsi.rules;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.bukharovsi.Coordinate;
+import ru.bukharovsi.rules.moveRules.PawnAfterFirstTurnRules;
 
 import java.util.Collection;
-
-import static org.junit.Assert.*;
 
 public class PawnAfterFirstTurnRulesTest {
 

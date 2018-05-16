@@ -1,14 +1,14 @@
 package ru.bukharovsi.rules;
 
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.bukharovsi.Coordinate;
+import ru.bukharovsi.rules.moveRules.MoveRules;
+import ru.bukharovsi.rules.moveRules.PawnFirstTurnRules;
 
 import java.util.Collection;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 public class PawnFirstTurnRulesTest {
     @Test

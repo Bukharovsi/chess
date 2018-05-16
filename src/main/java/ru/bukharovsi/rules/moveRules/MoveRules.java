@@ -1,4 +1,4 @@
-package ru.bukharovsi.rules;
+package ru.bukharovsi.rules.moveRules;
 
 import ru.bukharovsi.Coordinate;
 

@@ -7,6 +7,11 @@ import ru.bukharovsi.exceptions.CellIsOccupiedException;
 
 import java.util.Optional;
 
+/**
+ * Represents a one cell of chessboard.
+ * Has a coordinate like E5, D4, also has a colour (black or white)
+ * Can be occupied by chessman.
+ */
 public class Cell implements Comparable<Cell> {
 
     private Colour colour;

@@ -1,8 +1,8 @@
 package ru.bukharovsi.chessmans;
 
 import ru.bukharovsi.Cell;
-import ru.bukharovsi.rules.PawnFirstTurnRules;
-import ru.bukharovsi.rules.PawnAfterFirstTurnRules;
+import ru.bukharovsi.rules.moveRules.PawnFirstTurnRules;
+import ru.bukharovsi.rules.moveRules.PawnAfterFirstTurnRules;
 
 public class Pawn extends AbstractChessman {
 
@@ -13,13 +13,13 @@ public class Pawn extends AbstractChessman {
     @Override
     public void goTo(Cell cell) {
         super.goTo(cell);
-        rules = new PawnAfterFirstTurnRules();
+        moveRules = new PawnAfterFirstTurnRules();
     }
 
     @Override
     public void hackTo(Cell cell) {
         super.hackTo(cell);
-        rules = new PawnAfterFirstTurnRules();
+        moveRules = new PawnAfterFirstTurnRules();
     }
 
     @Override
