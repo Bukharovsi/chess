@@ -24,4 +24,12 @@ public class MoveForwardRuleFactory {
             return new MoveDownTwoStepsRule();
         }
     }
+
+    public static MoveRule createOneStepDForwardDiagonal(Colour chessmanColour) {
+        if (chessmanColour.isWhite()) {
+            return new MoveOneStepDiagonalUpRule();
+        } else { //black
+            return new MoveOneStepDiagonalDownRule();
+        }
+    }
 }

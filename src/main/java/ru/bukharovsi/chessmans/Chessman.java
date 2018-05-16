@@ -14,20 +14,40 @@ import java.util.Collection;
  */
 public interface Chessman {
 
+    /**
+     * Represents chessman colour. Black or White
+     * @return
+     */
     Colour colour();
 
+    /**
+     * Move this chessman to new location
+     * @param cell new location
+     */
     void goTo(Cell cell);
 
     void hackTo(Cell cell);
 
+    /**
+     * This chessman was hacked
+     */
     void killed();
 
+    /**
+     * Is possible to Move to new location
+     * @param cell
+     * @return
+     */
     boolean isPossibleToGoTo(Cell cell);
 
     boolean isPossibleToHackTo(Cell cell);
 
     boolean possibleToMove(Coordinate to);
 
+    /**
+     * Where is this chessman can go (based on chess rules)
+     * @return list of destinations
+     */
     Collection<Coordinate> possibleMovements();
 
 }
