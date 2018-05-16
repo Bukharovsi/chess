@@ -14,6 +14,8 @@ public interface Chessman {
 
     void hackTo(Cell cell);
 
+    void killed();
+
     boolean isPossibleToGoTo(Cell cell);
 
     boolean isPossibleToHackTo(Cell cell);

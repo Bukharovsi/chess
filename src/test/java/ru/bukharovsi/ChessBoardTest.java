@@ -21,9 +21,9 @@ public class ChessBoardTest {
 
     @Test
     public void name() {
-        ChessBoard chessBoard = new ChessBoard();
-        System.out.println(chessBoard.cell("A2").getOccupant().possibleMovements());
-        chessBoard.cell("A2").getOccupant().goTo(chessBoard.cell("A5"));
-        System.out.println(chessBoard.toString());
+//        ChessBoard chessBoard = new ChessBoard();
+//        System.out.println(chessBoard.cell("A2").getOccupant().possibleMovements());
+//        chessBoard.cell("A2").getOccupant().goTo(chessBoard.cell("A5"));
+//        System.out.println(chessBoard.toString());
     }
 }

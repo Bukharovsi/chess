@@ -1,12 +1,15 @@
 package ru.bukharovsi.chessmans;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.bukharovsi.Cell;
 import ru.bukharovsi.Coordinate;
+import ru.bukharovsi.exceptions.ChessmanHackException;
 import ru.bukharovsi.exceptions.ChessmanMovementException;
 import ru.bukharovsi.rules.MoveRules;
 
 import java.util.Collection;
 
+@Slf4j
 public abstract class AbstractChessman implements Chessman {
 
     private Cell.Colour colour;
@@ -29,7 +32,7 @@ public abstract class AbstractChessman implements Chessman {
     @Override
     public void goTo(Cell cell) {
         if (! possibleToMove(cell.coordinate())) {
-            throw new ChessmanMovementException("ololo");
+            throw ChessmanMovementException.cantMoveToCell(this, cell);
         }
         standAt.removeOccupant();
         cell.occupy(this);
@@ -37,12 +40,31 @@ public abstract class AbstractChessman implements Chessman {
 
     @Override
     public void hackTo(Cell cell) {
-        cell.removeOccupant();
+        if (! possibleToMove(cell.coordinate())) {
+            throw ChessmanMovementException.cantMoveToCell(this, cell);
+        }
+
+        if (! cell.isOccupaied()) {
+            throw ChessmanHackException.cellNotOccupied(this, cell);
+        }
+
+        if (cell.getOccupant().colour().equals(this.colour)) {
+            throw ChessmanHackException.cellOccupantHasTheSameColour(this, cell);
+        }
+
+        Chessman killedOccupant = cell.removeOccupant();
+        killedOccupant.killed();
         cell.occupy(this);
     }
 
     public Cell standAt() {
         return standAt;
+    }
+
+    @Override
+    public void killed() {
+        log.info(String.format("%s was killed", this));
+        standAt = null; //todo need to fix!
     }
 
     @Override
