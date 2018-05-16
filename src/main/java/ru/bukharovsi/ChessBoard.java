@@ -1,9 +1,6 @@
 package ru.bukharovsi;
 
-import ru.bukharovsi.chessmans.Bishop;
-import ru.bukharovsi.chessmans.Pawn;
-import ru.bukharovsi.chessmans.Queen;
-import ru.bukharovsi.chessmans.Rook;
+import ru.bukharovsi.chessmans.*;
 import ru.bukharovsi.exceptions.BoardAccessException;
 
 import java.util.HashMap;
@@ -64,9 +61,14 @@ public class ChessBoard {
         board.get(Coordinate.at("C8")).occupy(new Bishop(Cell.Colour.BLACK, board.get(Coordinate.at("C1"))));
         board.get(Coordinate.at("F8")).occupy(new Bishop(Cell.Colour.BLACK, board.get(Coordinate.at("F1"))));
 
-        //add queens
+        // add queens
         board.get(Coordinate.at("D1")).occupy(new Queen(Cell.Colour.WHITE, board.get(Coordinate.at("D1"))));
         board.get(Coordinate.at("D8")).occupy(new Queen(Cell.Colour.BLACK, board.get(Coordinate.at("D8"))));
+
+        // add kings
+        board.get(Coordinate.at("E1")).occupy(new King(Cell.Colour.WHITE, board.get(Coordinate.at("E1"))));
+        board.get(Coordinate.at("E8")).occupy(new King(Cell.Colour.BLACK, board.get(Coordinate.at("E8"))));
+
     }
 
     public Cell cell(Coordinate coordinate) {
