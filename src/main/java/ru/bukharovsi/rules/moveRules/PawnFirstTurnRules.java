@@ -9,12 +9,7 @@ import java.util.List;
 /**
  * In first turn Pawn can go forward 2 times
  */
-public class PawnFirstTurnRules implements MoveRules {
-
-    @Override
-    public boolean possibleToMove(Coordinate from, Coordinate to) {
-        return possibleMovementsFrom(from).contains(to);
-    }
+public class PawnFirstTurnRules extends AbstractMoveRule {
 
     @Override
     public Collection<Coordinate> possibleMovementsFrom(Coordinate from) {
