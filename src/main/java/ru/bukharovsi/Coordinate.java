@@ -19,6 +19,7 @@ public class Coordinate implements Comparable<Coordinate> {
 
 
     public Coordinate(Character x, int y) {
+        x = Character.toUpperCase(x);
         Objects.requireNonNull(y);
         if (! xIsValid(x)) {
             throw new IllegalArgumentException(String.format("X '%d' coordinate not valid", x));

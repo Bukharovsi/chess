@@ -6,6 +6,9 @@ import ru.bukharovsi.chessmans.Chessman;
 
 import java.util.Scanner;
 
+/**
+ * Represents a game lap
+ */
 public class Game {
 
     private ChessBoard chessBoard;

@@ -20,6 +20,12 @@ public class CoordinateTest {
         Assert.assertEquals("E2", e2.toString());
     }
 
+    @Test
+    public void whenCoordinatesInLowerCaseThenCoordinatesAreCorrect() {
+        Assert.assertEquals(Coordinate.at("E2"), new Coordinate('e', 2));
+    }
+
+
 
     @Test(expected = IllegalArgumentException.class)
     public void whenXCoordinateNowValidThenThrowsException() {
