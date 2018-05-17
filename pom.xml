@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ru.bukharovsi.Main</mainClass>
+                            <mainClass>ru.bukharovsi.chess.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -42,7 +42,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>ru.bukharovsi.Main</mainClass>
+                            <mainClass>ru.bukharovsi.chess.Main</mainClass>
                         </manifest>
                     </archive>
 
