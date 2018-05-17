@@ -29,7 +29,7 @@ cell has a coordinate.
 
 ## Known bugs
  - no horses
- - every chessman moves like a horse (it jumps over another chessmen 
+ - every chessman moves like a horse (it jumps over another chessman)
  
 ## Unknown bugs
 I suppose it has a lot ot them :)
